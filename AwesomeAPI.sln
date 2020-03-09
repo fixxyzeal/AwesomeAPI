@@ -9,11 +9,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ServiceLB", "ServiceLB\Serv
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UnitTest", "UnitTest\UnitTest.csproj", "{27070C3C-5D0E-4550-A9DF-49E6C1016A2F}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".circleci", ".circleci", "{3B683756-558B-41EF-BFE1-D47EF5C2F7FA}"
-	ProjectSection(SolutionItems) = preProject
-		AwesomeAPI\.circleci\config.yml = AwesomeAPI\.circleci\config.yml
-	EndProjectSection
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

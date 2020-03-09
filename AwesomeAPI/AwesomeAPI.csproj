@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove=".circleci\**" />
+    <Content Remove=".circleci\**" />
+    <EmbeddedResource Remove=".circleci\**" />
+    <None Remove=".circleci\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.5" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.0.0" />
@@ -15,9 +22,5 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ServiceLB\ServiceLB.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include=".circleci\config.yml" />
   </ItemGroup>
 </Project>
