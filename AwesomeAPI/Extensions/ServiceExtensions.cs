@@ -51,6 +51,7 @@ namespace AwesomeAPI.Extension
                     },
                 });
 
+                // Add Jwt
                 c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
                 {
                     Name = "Authorization",
