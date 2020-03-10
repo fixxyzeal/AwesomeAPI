@@ -8,6 +8,7 @@ jobs:
 
       # build image
       - run: |
+          pushd ./AwesomeAPI/AwesomeAPI/
           docker info
           docker build -t awesomeapi -f Dockerfile .
 
