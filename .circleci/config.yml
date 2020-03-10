@@ -2,13 +2,13 @@ version: 2
 jobs:
   build:
     machine: true
-
+    working_directory: /build/
     steps:
       - checkout
 
       # build image
       - run: |
-          pushd ./AwesomeAPI/AwesomeAPI/
+          pushd ./AwesomeAPI/
           docker info
           docker build -t awesomeapi -f Dockerfile .
 
