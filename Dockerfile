@@ -8,10 +8,10 @@ RUN dotnet restore
 
 # Copy everything else and build
 COPY . ./
-RUN dotnet publish "AwesomeAPI" -c Release -o out
+RUN dotnet publish "AwesomeAPI" -c Release -o /app
 
 # Build runtime image
-FROM mcr.microsoft.com/dotnet/core/sdk:3.1-buster
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 as final
 WORKDIR /app
 COPY --from=build-env /app .
 CMD ASPNETCORE_URLS=http://*:$PORT dotnet AwesomeAPI.dll
