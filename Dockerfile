@@ -3,7 +3,7 @@ WORKDIR /app
 
 # Copy csproj and restore as distinct layers
 WORKDIR /src
-COPY ../
+COPY . .
 RUN dotnet restore ". AwesomeAPI/AwesomeAPI.csproj"
 
 # Copy everything else and build
