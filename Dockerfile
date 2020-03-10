@@ -2,12 +2,12 @@ FROM mcr.microsoft.com/dotnet/core/sdk:3.1 AS build-env
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers
-WORKDIR /src
+WORKDIR /src/AwesomeAPI
 COPY . .
-RUN dotnet restore ". AwesomeAPI/AwesomeAPI.csproj"
+RUN dotnet restore "AwesomeAPI.csproj"
 
 # Copy everything else and build
-WORKDIR "/src/AwesomeAPI"
+WORKDIR /src/AwesomeAPI
 RUN dotnet publish "AwesomeAPI.csproj" -c Release -o out
 
 # Build runtime image
