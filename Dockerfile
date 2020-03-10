@@ -14,4 +14,4 @@ RUN dotnet publish "AwesomeAPI" -c Release -o /app
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1 as final
 WORKDIR /app
 COPY --from=build-env /app .
-CMD ASPNETCORE_URLS=http://*:$PORT dotnet AwesomeAPI.dll
+CMD ASPNETCORE_URLS=http://*:$PORT dotnet AwesomeAPI.dll --environment "Production"
