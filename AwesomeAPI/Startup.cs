@@ -11,6 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Serilog;
 
 namespace AwesomeAPI
 {
@@ -25,6 +26,12 @@ namespace AwesomeAPI
                 .AddEnvironmentVariables();
 
             Configuration = builder.Build();
+
+            // Set up log
+            Log.Logger = new LoggerConfiguration()
+
+                .WriteTo.Console(outputTemplate: "[{Timestamp:dd-MM-yyyy HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}")
+                .CreateLogger();
         }
 
         public IConfiguration Configuration { get; }
