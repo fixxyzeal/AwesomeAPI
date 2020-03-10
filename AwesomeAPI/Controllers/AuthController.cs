@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Serilog;
 using ServiceLB;
 using ServiceLB.Models;
 
@@ -16,15 +17,13 @@ namespace AwesomeAPI.Controllers
     [Route("[controller]")]
     public class AuthController : ControllerBase
     {
-        private readonly ILogger<AuthController> _logger;
         private readonly IAuthService _authService;
 
         public AuthController(
-            ILogger<AuthController> logger,
+
             IAuthService authService
             )
         {
-            _logger = logger;
             _authService = authService;
         }
 
@@ -35,10 +34,14 @@ namespace AwesomeAPI.Controllers
         {
             string result = await _authService.CreateAccessToken(auth).ConfigureAwait(false);
 
-            if (string.IsNullOrEmpty(result))
+            if (string.IsNullOrEmpty(result) || result.Contains("not match"))
             {
+                Log.Error($"Login failed email: {auth.Email}");
+
                 return Unauthorized();
             }
+
+            Log.Information($"Login Complete email: {auth.Email}");
 
             return Ok(new { token = result });
         }
