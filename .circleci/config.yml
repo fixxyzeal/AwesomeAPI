@@ -1,8 +1,12 @@
 version: 2
 jobs:
+  general:
+    branches:
+      only:
+        - master # list of branches to build
   build:
     machine: true
-    
+
     steps:
       - checkout
 
