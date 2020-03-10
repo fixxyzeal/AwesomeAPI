@@ -7,12 +7,11 @@ WORKDIR /app/aspnetapp
 RUN dotnet restore
 
 # Copy everything else and build
-COPY . ./aspnetapp/
-WORKDIR /app/aspnetapp
-RUN dotnet publish "AwesomeAPI.csproj" -c Release -o out
+COPY . ./
+RUN dotnet publish "AwesomeAPI" -c Release -o out
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
 WORKDIR /app
-COPY --from=build-env /app/out .
+COPY /app/aspnetapp/src/AwesomeAPI/out ./
 CMD dotnet AwesomeAPI.dll
