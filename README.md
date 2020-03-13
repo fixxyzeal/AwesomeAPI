@@ -1,2 +1,2 @@
 # AwesomeAPI
-Api for FDS 
+Api for FSD Studio
